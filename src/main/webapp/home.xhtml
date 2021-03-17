@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<title>Home</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/CSSprincipal.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</h:head>
+<h:body styleClass="body">
+	<h:form id="formNavbar" styleClass="form">
+		<p:menubar styleClass="menuBut">
+			<p:menuitem value="Contas" action="#{templateMB.setOpt(1)}"
+				ajax="true" update=":formTemplate" />
+			<p:menuitem value="Empresas" actionListener="#{empresaMB.atualizar}"
+				action="#{templateMB.setOpt(2)}" ajax="true" update=":formTemplate" />
+		</p:menubar>
+	</h:form>
+	<h:form id="formTemplate">
+		<b:growl id="growlP" globalOnly="true" placementFrom="top"
+			show-detail="true" escape="true"/>
+		<ui:insert>
+			<ui:include src="#{templateMB.mudar()}" />
+		</ui:insert>
+	</h:form>
+</h:body>
+</html>
