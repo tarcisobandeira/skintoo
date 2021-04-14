@@ -14,16 +14,21 @@
 </h:head>
 <h:body styleClass="body">
 	<h:form id="formNavbar" styleClass="form">
-		<p:menubar styleClass="menuBut">
-			<p:menuitem value="Contas" action="#{templateMB.setOpt(1)}"
-				ajax="true" update=":formTemplate" />
-			<p:menuitem value="Empresas" actionListener="#{empresaMB.atualizar}"
-				action="#{templateMB.setOpt(2)}" ajax="true" update=":formTemplate" />
-		</p:menubar>
+		<b:image styleClass="logo" name="/img/skintoo.png" library="resources" />
+		<b:navBar>
+			<b:navbarLinks>
+				<b:navCommandLink value="Skintoo" action="#{templateMB.setOpt(1)}"
+					ajax="true" update=":formTemplate" />
+				<b:navCommandLink value="Produtos" />
+				<b:navCommandLink value="Opiniões" />
+				<b:navCommandLink value="Login" action="#{templateMB.setOpt(2)}"
+					ajax="true" update=":formTemplate" />
+			</b:navbarLinks>
+		</b:navBar>
 	</h:form>
-	<h:form id="formTemplate">
+	<h:form id="formTemplate" styleClass="formTemplate">
 		<b:growl id="growlP" globalOnly="true" placementFrom="top"
-			show-detail="true" escape="true"/>
+			show-detail="true" escape="true" />
 		<ui:insert>
 			<ui:include src="#{templateMB.mudar()}" />
 		</ui:insert>

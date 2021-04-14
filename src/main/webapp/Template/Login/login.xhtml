@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formLogin">
+		
+		<b:panel>
+			<b:growl id="growlL" globalOnly="true" placementFrom="top"
+			show-detail="true" escape="true" />
+		<b:container fluid="true" styleClass="col-md-5" style="float: none">
+			<b:panel title="Login" collapsible="false" look="primary">
+				<b:row>
+					<b:column col-xs="12" col-md="4" style="width:100%">
+						<b:inputText label="Usuário: " placeholder="Usuário" id="username"
+							value="#{loginMB.login}" required="true">
+						</b:inputText>
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="4" style="width:100%">
+						<b:inputSecret label="Senha: " placeholder="Senha" id="password"
+							value="#{loginMB.senha}" required="true">
+						</b:inputSecret>
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="4" style="width:100%">
+						<b:commandButton value="login" action="#{loginMB.verificar}"
+							look="primary" style="width:100%" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+		</b:panel>
+	
+	</h:form>
+</ui:composition>
