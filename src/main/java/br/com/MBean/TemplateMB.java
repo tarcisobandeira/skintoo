@@ -14,6 +14,8 @@ public class TemplateMB {
 			return "/Template/inicio.xhtml";
 		}else if(opt == 2) {
 			return "/Template/Login/login.xhtml";
+		}else if(opt == 3) {
+			return "/Template/Login/cadastro.xhtml";
 		}
 		return null;
 	}
