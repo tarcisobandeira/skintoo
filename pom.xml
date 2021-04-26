@@ -10,41 +10,41 @@
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>2.2.2</version>
+			<version>2.2.20</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>2.2.2</version>
+			<version>2.2.20</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
+			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>7.0</version>
+			<version>10.0.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>3.2.0</version>
+			<version>4.6.0-1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/net.bootsfaces/bootsfaces -->
 		<dependency>
 			<groupId>net.bootsfaces</groupId>
 			<artifactId>bootsfaces</artifactId>
-			<version>1.4.2</version>
+			<version>1.5.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/clj-http/clj-http -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
+			<version>8.0.23</version>
 		</dependency>
 	</dependencies>
 	<build>

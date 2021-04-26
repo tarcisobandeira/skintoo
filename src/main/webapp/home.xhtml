@@ -14,15 +14,19 @@
 </h:head>
 <h:body styleClass="body">
 	<h:form id="formNavbar" styleClass="form">
-		<b:image styleClass="logo" name="/img/skintoo.png" library="resources" />
+		<b:image styleClass="logo" value="resources/img/skintoo.png" />
 		<b:navBar>
 			<b:navbarLinks>
 				<b:navCommandLink value="Skintoo" action="#{templateMB.setOpt(1)}"
 					ajax="true" update=":formTemplate" />
-				<b:navCommandLink value="Produtos" />
-				<b:navCommandLink value="Opiniões" />
-				<b:navCommandLink value="Login" action="#{templateMB.setOpt(2)}"
+				<b:navCommandLink value="Produtos" action="#{templateMB.setOpt(4)}"
 					ajax="true" update=":formTemplate" />
+				<b:navCommandLink value="Opiniões" action="#{templateMB.setOpt(6)}"
+					ajax="true" update=":formTemplate" />
+				<b:navCommandLink value="Login" rendered="#{loginMB.logado != true}"
+					action="#{templateMB.setOpt(2)}" ajax="true" update=":formTemplate" />
+				<b:navCommandLink value="#{loginMB.u.nome}"
+					rendered="#{loginMB.logado}" />
 			</b:navbarLinks>
 		</b:navBar>
 	</h:form>

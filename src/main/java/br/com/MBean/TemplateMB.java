@@ -11,11 +11,17 @@ public class TemplateMB {
 
 	public String mudar() {
 		if (opt == 1) {
-			return "/Template/inicio.xhtml";
+			return "/Template/Inicio/inicio.xhtml";
 		}else if(opt == 2) {
 			return "/Template/Login/login.xhtml";
 		}else if(opt == 3) {
 			return "/Template/Login/cadastro.xhtml";
+		}else if(opt == 4) {
+			return "/Template/Produtos/produtos.xhtml";
+		}else if(opt == 5) {
+			return "/Template/Produtos/addProdutos.xhtml";
+		}else if(opt == 6) {
+			return "/Template/Opnioes/opnioes.xhtml";
 		}
 		return null;
 	}

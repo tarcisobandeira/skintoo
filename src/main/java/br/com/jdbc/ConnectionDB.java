@@ -19,10 +19,10 @@ public class ConnectionDB {
 				try {
 					DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 					con = DriverManager.getConnection(dns, user, pass);
-					System.out.println("Contratos:DB ON.");
+					System.out.println("Skintoo:DB ON.");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					System.out.println("Contratos:Erro ao conectar no DB.");
+					System.out.println("Skintoo:Erro ao conectar no DB.");
 					e.printStackTrace();
 				}
 			}

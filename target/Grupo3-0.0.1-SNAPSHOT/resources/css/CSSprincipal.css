@@ -1,0 +1,25 @@
+body{
+	background: url("backgrond.jpg") black;
+	background-repeat: no-repeat;
+    background-position: center;
+}
+
+.form{
+	background: black;
+}
+
+.logo{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+}
+
+.NavBar{
+	border-radius: 0px !important;
+}
+
+.formTemplate{
+	margin-right: 6%;
+    margin-left: 6%;
+}

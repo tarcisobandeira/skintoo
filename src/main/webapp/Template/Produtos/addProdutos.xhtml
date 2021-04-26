@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formAddProdutos">
+
+		<b:container fluid="true" styleClass="col-md-5" style="float: none">
+			<b:panel>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Nome do item:" id="itemNome" value="#{a}" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="quantidade: " id="quantidade" value="#{a}" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
+</ui:composition>

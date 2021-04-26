@@ -31,9 +31,9 @@ CREATE TABLE Informacoes(
 	FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 );
 
-DROP TABLE IF EXISTS Produto;
+DROP TABLE IF EXISTS Produtos;
 
-CREATE TABLE Produto(
+CREATE TABLE Produtos(
 	id 			INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nome		VARCHAR(100),
 	quantidade	INT
