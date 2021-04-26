@@ -5,36 +5,47 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-	<h:form id="formLogin">
+	<h:form id="formCadastro">
 
-			<b:growl id="growlL" globalOnly="true" placementFrom="top"
-				show-detail="true" escape="true" />
-			<b:container fluid="true" styleClass="col-md-5" style="float: none">
-				<b:panel title="Login" collapsible="false">
-					<b:row>
-						<b:column col-xs="12" col-md="4" style="width:100%">
-							<b:inputText label="Usuário: " placeholder="Usuário"
-								id="username" value="#{loginMB.login}" required="true">
-							</b:inputText>
-						</b:column>
-					</b:row>
-					<b:row>
-						<b:column col-xs="12" col-md="4" style="width:100%">
-							<b:inputSecret label="Senha: " placeholder="Senha" id="password"
-								value="#{loginMB.senha}" required="true">
-							</b:inputSecret>
-						</b:column>
-					</b:row>
-					<b:row>
-						<b:column col-xs="12" col-md="4" style="width:100%">
-							<b:commandButton value="login" action="#{loginMB.verificar}"
-								style="width:50%" />
-							<b:commandButton value="Registrar" action="#{a}"
-								style="width:50%" look="danger"/>
-						</b:column>
-					</b:row>
-				</b:panel>
-			</b:container>
+		<b:growl id="growlL" globalOnly="true" placementFrom="top"
+			show-detail="true" escape="true" />
+		<b:container fluid="true" styleClass="col-md-5" style="float: none">
+			<b:panel title="Cadastro" collapsible="false">
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Nome:" id="username"
+							value="#{cadastroMB.u.nome}" required="true" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Sobrenome: " id="username2"
+							value="#{cadastroMB.u.sobrenome}" required="true" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="4" style="width:100%">
+						<b:inputText label="Email: " placeholder="teste@teste.com"
+							id="emailuser" value="#{cadastroMB.u.email}" required="true">
+						</b:inputText>
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputSecret label="Senha: " id="password"
+							value="#{cadastroMB.u.senha}" required="true" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputSecret label="Digite a senha novamente: " id="password2"
+							value="#{cadastroMB.senha}" required="true" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="4" style="width:100%">
+						<b:commandButton value="Cadastrar" action="#{cadastroMB.criar}"
+							style="width:100%" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
 
 	</h:form>
 </ui:composition>
