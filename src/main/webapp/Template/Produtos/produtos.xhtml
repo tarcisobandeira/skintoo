@@ -6,27 +6,28 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 	<h:form id="formProdutos">
-
 		<b:panel rendered="#{loginMB.u.prioridade == 2}">
 			<b:commandButton value="ADD" action="#{templateMB.setOpt(5)}"
 				ajax="true" update=":formTemplate" />
 		</b:panel>
+		<b:panel>
+			<p:dataView var="prod" value="#{produtosMB.pList}" rows="12"
+				paginator="true" rowsPerPageTemplate="6,12,16"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+				<p:dataViewListItem>
+					<div>
+						<h:outputText value="#{prod.nome}" />
+					</div>
+				</p:dataViewListItem>
 
 		<p:dataView var="prod" value="#{produtosMB.pList}" rows="12"
-			paginator="true" rowsPerPageTemplate="6,12,16"
-			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			gridIcon="pi pi-th-large" listIcon="pi pi-bars">
-			<p:dataViewListItem>
-				<div>
-					<h:outputText value="#{prod.nome}" />
-				</div>
-			</p:dataViewListItem>
-
-			<p:dataViewGridItem>
-				<div>
-					<h:outputText value="#{prod.nome}" />
-				</div>
-			</p:dataViewGridItem>
-		</p:dataView>
+				<p:dataViewGridItem>
+					<div>
+						<h:outputText value="#{prod.nome}" />
+					</div>
+				</p:dataViewGridItem>
+			</p:dataView>
+		</b:panel>
 	</h:form>
 </ui:composition>
