@@ -15,9 +15,19 @@ public class ProdutosMB {
 
 	ProdutosDAO pDAO = new ProdutosDAO();
 
+	Produtos p = new Produtos();
+
 	List<Produtos> pList = new ArrayList<Produtos>();
 
 	public ProdutosMB() {
+		pList = pDAO.listaProdutos();
+	}
+
+	public void addProc() {
+
+	}
+	
+	public void updateList() {
 		pList = pDAO.listaProdutos();
 	}
 
@@ -35,6 +45,14 @@ public class ProdutosMB {
 
 	public void setpList(List<Produtos> pList) {
 		this.pList = pList;
+	}
+
+	public Produtos getP() {
+		return p;
+	}
+
+	public void setP(Produtos p) {
+		this.p = p;
 	}
 
 }

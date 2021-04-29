@@ -5,15 +5,22 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-	<h:form id="formProdutos">
+	<h:form id="formAdmProdutos">
 		<b:panel>
+			<b:button value="Adicionar" look="primary"
+				style="margin-bottom: 5px !important" />
+			<br />
 			<b:dataTable value="#{produtosMB.pList}" var="proc"
 				styleClass="grade">
-				<b:dataTableColumn label="Teste">
+				<b:dataTableColumn label="">
 					<b:image styleClass="imgProc" value="resources/img/skintoo.png" />
 				</b:dataTableColumn>
 				<b:dataTableColumn value="#{proc.nome}" />
 				<b:dataTableColumn value="#{proc.quantidade}" />
+				<b:dataTableColumn label="Opções">
+					<b:button icon="cog" look="warning" />
+					<b:button iconAwesome="fa-close" look="danger" />
+				</b:dataTableColumn>
 			</b:dataTable>
 		</b:panel>
 	</h:form>

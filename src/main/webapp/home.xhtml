@@ -21,6 +21,9 @@
 					ajax="true" update=":formTemplate" />
 				<b:navCommandLink value="Produtos" action="#{templateMB.setOpt(4)}"
 					ajax="true" update=":formTemplate" />
+				<b:navCommandLink value="Administração de Produtos"
+					rendered="#{loginMB.u.prioridade == 2}"
+					action="#{templateMB.setOpt(5)}" ajax="true" update=":formTemplate" />
 				<b:navCommandLink value="Opiniões" action="#{templateMB.setOpt(6)}"
 					ajax="true" update=":formTemplate" />
 				<b:navCommandLink value="Login" rendered="#{loginMB.logado != true}"
