@@ -7,9 +7,9 @@
 
 	<h:form id="formAdmProdutos">
 		<b:panel>
-			<b:button value="Adicionar" look="primary"
+			<b:commandButton value="Adicionar" look="primary"
+				action="#{templateMB.setOpt(7)}"
 				style="margin-bottom: 5px !important" />
-			<br />
 			<b:dataTable value="#{produtosMB.pList}" var="proc"
 				styleClass="grade">
 				<b:dataTableColumn label="">
@@ -18,8 +18,8 @@
 				<b:dataTableColumn value="#{proc.nome}" />
 				<b:dataTableColumn value="#{proc.quantidade}" />
 				<b:dataTableColumn label="Opções">
-					<b:button icon="cog" look="warning" />
-					<b:button iconAwesome="fa-close" look="danger" />
+					<b:commandButton icon="cog" look="warning" />
+					<b:commandButton iconAwesome="fa-close" look="danger" />
 				</b:dataTableColumn>
 			</b:dataTable>
 		</b:panel>

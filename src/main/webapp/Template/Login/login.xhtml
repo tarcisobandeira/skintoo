@@ -26,12 +26,13 @@
 					</b:column>
 				</b:row>
 				<b:row>
-					<b:column col-xs="12" col-md="4" style="width:100%">
-						<b:commandButton value="login" action="#{loginMB.logar}"
-							style="width:50%" />
-						<b:commandButton value="Registrar"
-							action="#{templateMB.setOpt(3)}" style="width:50%" look="danger"
-							immediate="true" />
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Login" action="#{loginMB.logar}"
+							style="width:100%" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Registrar" style="width:100%"
+							action="#{templateMB.setOpt(3)}" look="danger" immediate="true" />
 					</b:column>
 				</b:row>
 			</b:panel>
