@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:b="http://bootsfaces.net/ui">
 
-	<h:form id="formAddProdutos" enctype="multipart/form-data">
+	<h:form id="formAddProdutos">
 
 
 		<b:container fluid="true" styleClass="col-md-5" style="float: none">
@@ -23,18 +23,9 @@
 					</b:column>
 				</b:row>
 				<b:row>
-					<b:column style="padding-bottom:3%">
-
-						<p:fileUpload value="#{produtosMB.up}" label="Selecione a Imagem"
-							mode="simple" skinSimple="true" required="true"
-							allowTypes="/(\.|\/)(gif|jpe?g|png)$/" validateContentType="true"
-							accept=".gif,.jpg,.jpeg,.png" />
-					</b:column>
-				</b:row>
-				<b:row>
 					<b:column col-xs="12" col-md="6">
-						<b:commandButton value="Adicionar" style="width:100%" ajax="false"
-							action="#{produtosMB.addProc}" />
+						<b:commandButton value="Adicionar" style="width:100%"
+							actionListener="#{produtosMB.addProc}" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
 						<b:commandButton value="Voltar" style="width:100%"

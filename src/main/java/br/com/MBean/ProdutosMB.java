@@ -1,44 +1,46 @@
 package br.com.MBean;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
-import org.primefaces.model.file.UploadedFile;
+import org.primefaces.event.FileUploadEvent;
 
 import br.com.DAO.ProdutosDAO;
 import br.com.Entities.Produtos;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class ProdutosMB extends UploadMB {
 
 	ProdutosDAO pDAO = new ProdutosDAO();
 
 	Produtos p = new Produtos();
-	private UploadedFile up;
 
 	List<Produtos> pList = new ArrayList<Produtos>();
 
 	public ProdutosMB() {
 		updateList();
+		String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
+		System.out.println(path);
+	}
+
+	public void upAuto(FileUploadEvent event) {
+		p.setEndereco(super.addAnexo(event).getName());
+		if (p.getEndereco() != null) {
+			pDAO.updateProc(p);
+		}
 	}
 
 	public void addProc() {
-		if (up != null) {
-			File file = super.addAnexo(up);
-			p.setEndereco(file.getName());
-			if (pDAO.inserir(p)) {
-				System.out.println("Deu");
-				updateList();
-			} else {
-				System.out.println("Não DEu");
-			}
+		if (pDAO.inserir(p)) {
+			System.out.println("Deu");
+			updateList();
 		} else {
-			System.out.println("up ta null");
+			System.out.println("Não DEu");
 		}
 	}
 
@@ -68,14 +70,6 @@ public class ProdutosMB extends UploadMB {
 
 	public void setP(Produtos p) {
 		this.p = p;
-	}
-
-	public UploadedFile getUp() {
-		return up;
-	}
-
-	public void setUp(UploadedFile up) {
-		this.up = up;
 	}
 
 }

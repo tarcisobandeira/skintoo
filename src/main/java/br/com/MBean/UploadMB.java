@@ -7,18 +7,26 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Calendar;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
-
+@ManagedBean
+@ViewScoped
 public class UploadMB {
 
+	String path = FacesContext.getCurrentInstance().getExternalContext().getRequestServletPath();
 	private static String local = "\\resources\\img\\imgProc\\";
 	String palavra;
 
-	public File addAnexo(UploadedFile upFile) {
+	public File addAnexo(FileUploadEvent event) {
+		UploadedFile upFile = event.getFile();
 
-		File caminho = new File(local);
-
+		File caminho = new File(path + local);
+		System.out.println(caminho.getPath());
 		testeCaminho(caminho);
 
 		File file = new File(caminho, trocaNomeFile(upFile.getFileName()));

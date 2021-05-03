@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formAdmProdutos">
+		<b:panel>
+			<b:commandButton value="Adicionar" look="primary"
+				action="#{templateMB.setOpt(7)}"
+				style="margin-bottom: 5px !important" />
+			<b:dataTable value="#{produtosMB.pList}" var="proc"
+				styleClass="grade">
+				<b:dataTableColumn label="">
+					<b:image styleClass="imgProc" value="/resources/img/imgProc/#{proc.endereco}" />
+				</b:dataTableColumn>
+				<b:dataTableColumn value="#{proc.nome}" />
+				<b:dataTableColumn value="#{proc.quantidade}" />
+				<b:dataTableColumn label="Opções">
+					<b:commandButton icon="cog" look="warning"
+						action="#{templateMB.setOpt(8)}">
+						<f:setPropertyActionListener value="#{proc}"
+							target="#{produtosMB.p}" />
+					</b:commandButton>
+					<b:commandButton iconAwesome="fa-close" look="danger" />
+				</b:dataTableColumn>
+			</b:dataTable>
+		</b:panel>
+	</h:form>
+</ui:composition>

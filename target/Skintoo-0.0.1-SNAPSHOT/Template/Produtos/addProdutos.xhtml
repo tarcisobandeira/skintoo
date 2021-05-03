@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formAddProdutos">
+
+
+		<b:container fluid="true" styleClass="col-md-5" style="float: none">
+			<b:panel title="Adicionar" collapsible="false">
+				<b:row>
+					<b:column>
+						<b:inputText label="Nome do Item" required="true"
+							value="#{produtosMB.p.nome}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column>
+						<b:inputText label="Quantidade" mask="numeric" required="true"
+							value="#{produtosMB.p.quantidade}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Adicionar" style="width:100%"
+							actionListener="#{produtosMB.addProc}" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Voltar" style="width:100%"
+							action="#{templateMB.setOpt(5)}" immediate="true" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
+</ui:composition>

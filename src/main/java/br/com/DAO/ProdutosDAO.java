@@ -32,7 +32,7 @@ public class ProdutosDAO {
 				p.setNome(rs.getString("nome"));
 				p.setQuantidade(rs.getInt("quantidade"));
 				p.setEndereco(rs.getString("endereco"));
-				
+
 				list.add(p);
 			}
 		} catch (SQLException e) {
@@ -50,7 +50,7 @@ public class ProdutosDAO {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, p.getNome());
 			ps.setInt(2, p.getQuantidade());
-			ps.setString(3, p.getEndereco());
+			ps.setString(3, null);
 
 			if (ps.executeUpdate() == 1) {
 				return true;
@@ -58,6 +58,24 @@ public class ProdutosDAO {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean updateProc(Produtos p) {
+		String sql = " UPDATE Produtos SET endereco = ? WHERE id = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, p.getEndereco());
+			ps.setInt(2, p.getId());
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
 		}
 		return false;
 	}

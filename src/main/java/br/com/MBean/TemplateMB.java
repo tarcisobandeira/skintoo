@@ -24,6 +24,8 @@ public class TemplateMB {
 			return "/Template/Opnioes/opnioes.xhtml";
 		} else if (opt == 7) {
 			return "/Template/Produtos/addProdutos.xhtml";
+		} else if (opt == 8) {
+			return "/Template/Produtos/edtProdutos.xhtml";
 		}
 		return null;
 	}

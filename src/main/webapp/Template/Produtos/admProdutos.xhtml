@@ -13,12 +13,16 @@
 			<b:dataTable value="#{produtosMB.pList}" var="proc"
 				styleClass="grade">
 				<b:dataTableColumn label="">
-					<b:image styleClass="imgProc" value="resources/img/skintoo.png" />
+					<b:image styleClass="imgProc" value="/resources/img/imgProc/#{proc.endereco}" />
 				</b:dataTableColumn>
 				<b:dataTableColumn value="#{proc.nome}" />
 				<b:dataTableColumn value="#{proc.quantidade}" />
 				<b:dataTableColumn label="Opções">
-					<b:commandButton icon="cog" look="warning" />
+					<b:commandButton icon="cog" look="warning"
+						action="#{templateMB.setOpt(8)}">
+						<f:setPropertyActionListener value="#{proc}"
+							target="#{produtosMB.p}" />
+					</b:commandButton>
 					<b:commandButton iconAwesome="fa-close" look="danger" />
 				</b:dataTableColumn>
 			</b:dataTable>

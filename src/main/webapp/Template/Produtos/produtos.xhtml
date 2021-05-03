@@ -10,7 +10,8 @@
 			<b:dataTable value="#{produtosMB.pList}" var="proc"
 				styleClass="grade">
 				<b:dataTableColumn label="Teste">
-					<b:image styleClass="imgProc" value="resources/img/skintoo.png" />
+					<b:image styleClass="imgProc"
+						value="/resources/img/imgProc/#{proc.endereco}" />
 				</b:dataTableColumn>
 				<b:dataTableColumn value="#{proc.nome}" />
 				<b:dataTableColumn value="#{proc.quantidade}" />
