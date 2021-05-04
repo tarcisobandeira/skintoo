@@ -18,13 +18,19 @@ public class CadastroMB {
 		if (senha.equals(u.getSenha())) {
 			if (cDAO.inserir(u)) {
 				System.out.println("DEU");
+				limpar();
 			} else {
 				System.out.println("NÃO DEU");
 			}
 		} else {
 			System.out.println("Senha Errada");
-			
+
 		}
+	}
+
+	public void limpar() {
+		u = new Usuario();
+		senha = null;
 	}
 
 	public Usuario getU() {

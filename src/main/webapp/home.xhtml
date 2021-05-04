@@ -26,7 +26,7 @@
 					rendered="#{loginMB.u.prioridade != 2}" />
 
 				<b:navCommandLink value="Administração de Produtos"
-					
+					rendered="#{loginMB.u.prioridade == 2}"
 					action="#{templateMB.setOpt(5)}" ajax="true" update=":formTemplate" />
 
 				<b:navCommandLink value="Opiniões" action="#{templateMB.setOpt(6)}"
@@ -36,7 +36,10 @@
 					action="#{templateMB.setOpt(2)}" ajax="true" update=":formTemplate" />
 
 				<b:navCommandLink value="#{loginMB.u.nome}"
-					rendered="#{loginMB.logado}" />
+					action="#{templateMB.setOpt(9)}" rendered="#{loginMB.logado}" />
+
+				<b:navCommandLink value="Sair" rendered="#{loginMB.logado}"
+					action="#{loginMB.deslogar}" ajax="true" update=":formTemplate" />
 
 			</b:navbarLinks>
 		</b:navBar>

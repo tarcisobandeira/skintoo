@@ -62,13 +62,33 @@ public class ProdutosDAO {
 		return false;
 	}
 
-	public boolean updateProc(Produtos p) {
+	public boolean updateImgProc(Produtos p) {
 		String sql = " UPDATE Produtos SET endereco = ? WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, p.getEndereco());
 			ps.setInt(2, p.getId());
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return false;
+	}
+
+	public boolean updateProc(Produtos p) {
+		String sql = " UPDATE Produtos SET nome = ?, quantidade = ?, endereco = ? WHERE id = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, p.getNome());
+			ps.setInt(2, p.getQuantidade());
+			ps.setString(3, p.getEndereco());
+			ps.setInt(4, p.getId());
 
 			if (ps.executeUpdate() > 0) {
 				return true;

@@ -6,11 +6,9 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 	<h:form id="formEdtProdutos">
-
-
 		<b:container fluid="true" styleClass="col-md-5" style="float: none">
-			<b:panel title="Adicionar" collapsible="false">
-				<b:column>
+			<b:panel title="Editar" collapsible="false">
+				<b:column col-xs="12" col-md="6">
 					<b:row>
 						<b:column>
 							<b:inputText label="Nome do Item" required="true"
@@ -23,25 +21,29 @@
 								value="#{produtosMB.p.quantidade}" />
 						</b:column>
 					</b:row>
+					<b:row>
+						<b:column col-xs="12">
+							<b:commandButton value="Adicionar" style="width:100%"
+								actionListener="#{produtosMB.addProc}" />
+						</b:column>
+					</b:row>
 				</b:column>
-				<b:column>
+				<b:column col-xs="12" col-md="6">
 					<b:row>
 						<h:form enctype="multipart/form-data">
-							<p:fileUpload listener="#{produtosMB.upAuto}" mode="advanced"
-								dragDropSupport="false" update="formTemplate:growlP" sizeLimit="200000"
-								fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+							<p:fileUpload label="Selecione uma imagem"
+								listener="#{produtosMB.upAuto}" mode="advanced"
+								dragDropSupport="false" update="formTemplate:growlP"
+								sizeLimit="200000" fileLimit="3"
+								allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
 								validateContentType="true" accept=".gif,.jpg,.jpeg,.png"
 								onupload="return confirm('Você tem certeza?')" />
 						</h:form>
 					</b:row>
 				</b:column>
 				<b:row>
-					<b:column col-xs="12" col-md="6">
-						<b:commandButton value="Adicionar" style="width:100%"
-							actionListener="#{produtosMB.addProc}" />
-					</b:column>
-					<b:column col-xs="12" col-md="6">
-						<b:commandButton value="Voltar" style="width:100%"
+					<b:column offset-md="2" col-xs="12" col-md="8">
+						<b:commandButton value="Voltar" style="width:100%;margin-top:4%;"
 							action="#{templateMB.setOpt(5)}" immediate="true" />
 					</b:column>
 				</b:row>

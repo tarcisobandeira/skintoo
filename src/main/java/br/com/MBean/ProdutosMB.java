@@ -24,24 +24,39 @@ public class ProdutosMB extends UploadMB {
 		updateList();
 	}
 
-	public void upAuto(FileUploadEvent event) {
-		p.setEndereco(super.addAnexo(event).getName());
-		if (p.getEndereco() != null) {
-			pDAO.updateProc(p);
-		}
-	}
-
 	public void addProc() {
 		if (pDAO.inserir(p)) {
 			System.out.println("Deu");
 			updateList();
+			limpar();
 		} else {
 			System.out.println("Não DEu");
 		}
 	}
 
+	public void edtProc() {
+		if (pDAO.updateProc(p)) {
+			System.out.println("Deu");
+			updateList();
+			limpar();
+		} else {
+			System.out.println("Não DEu");
+		}
+	}
+
+	public void upAuto(FileUploadEvent event) {
+		p.setEndereco(super.addAnexo(event).getName());
+		if (p.getEndereco() != null) {
+			pDAO.updateImgProc(p);
+		}
+	}
+
 	public void updateList() {
 		pList = pDAO.listaProdutos();
+	}
+
+	public void limpar() {
+		p = new Produtos();
 	}
 
 	public ProdutosDAO getpDAO() {

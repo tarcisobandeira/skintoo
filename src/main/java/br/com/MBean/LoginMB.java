@@ -26,12 +26,25 @@ public class LoginMB {
 		if (u != null && u.getSenha().equals(senha)) {
 			System.out.println("deu");
 			logado = true;
+			limpar();
 			tMB.setOpt(1);
 			return "home?faces-redirect=true";
 		} else {
 			System.out.println("não deu");
 			return null;
 		}
+	}
+
+	public String deslogar() {
+		u = new Usuario();
+		logado = false;
+		tMB.setOpt(1);
+		return "home?faces-redirect=true";
+	}
+
+	public void limpar() {
+		login = null;
+		senha = null;
 	}
 
 	public LoginDAO getLdao() {

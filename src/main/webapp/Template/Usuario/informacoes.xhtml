@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formInformacoes">
+		<b:container fluid="true" styleClass="col-md-5" style="float: none">
+			<b:panel title="Informações do Cliente" collapsible="false">
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="CPF" required="true" mask=""/>
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Telefone" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="CEP" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Estado" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Cidade" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Número da Casa" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="12">
+						<b:inputText label="Rua" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Complemento" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Referncia" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Salvar" style="width:100%" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Voltar" style="width:100%" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
+</ui:composition>
