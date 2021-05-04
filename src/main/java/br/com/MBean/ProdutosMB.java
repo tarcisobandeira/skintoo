@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-
 import org.primefaces.event.FileUploadEvent;
 
 import br.com.DAO.ProdutosDAO;
@@ -24,8 +22,6 @@ public class ProdutosMB extends UploadMB {
 
 	public ProdutosMB() {
 		updateList();
-		String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
-		System.out.println(path);
 	}
 
 	public void upAuto(FileUploadEvent event) {

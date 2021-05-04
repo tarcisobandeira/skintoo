@@ -18,7 +18,7 @@ import org.primefaces.model.file.UploadedFile;
 @ViewScoped
 public class UploadMB {
 
-	String path = FacesContext.getCurrentInstance().getExternalContext().getRequestServletPath();
+	String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
 	private static String local = "\\resources\\img\\imgProc\\";
 	String palavra;
 
