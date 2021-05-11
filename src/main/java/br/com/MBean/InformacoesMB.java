@@ -27,7 +27,7 @@ public class InformacoesMB {
 	}
 
 	public void info() {
-
+		
 	}
 
 	public Informacoes getI() {
