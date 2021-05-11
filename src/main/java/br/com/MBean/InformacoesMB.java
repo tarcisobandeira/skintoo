@@ -11,40 +11,23 @@ import br.com.Entities.Informacoes;
 public class InformacoesMB {
 
 	Informacoes i = new Informacoes();
+	Informacoes in = new Informacoes();
 	InformacoesDAO iDAO = new InformacoesDAO();
 
-	int id;
+	Integer id;
 	String cpf;
-	String telefone;
 	String cep;
+	String telefone;
 
 	public void busca() {
-		i = iDAO.selecInfo(id);
+		in = iDAO.selecInfo(id);
+		if (in != null) {
+			i = in;
+		}
 	}
 
 	public void info() {
-		i.setId_usuario(id);
-		i.setCpf(tratamentoCpf(cpf));
-//		if (iDAO.testInfo(id)) {
-//			if (iDAO.editInfo(i)) {
-//				System.out.println("Deuuuu edit");
-//			} else {
-//				System.out.println("Deuuuu não edit");
-//			}
-//		} else {
-//			if (iDAO.criarInfo(i)) {
-//				System.out.println("Deuuuu edit");
-//			} else {
-//				System.out.println("Deuuuu não edit");
-//			}
-//		}
-	}
 
-	public Integer tratamentoCpf(String cpf) {
-		Integer n1 = null;
-
-		System.out.println(cpf);
-		return n1;
 	}
 
 	public Informacoes getI() {
@@ -63,20 +46,20 @@ public class InformacoesMB {
 		this.iDAO = iDAO;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getCpf() {
 		return cpf;
 	}
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getTelefone() {
@@ -87,12 +70,12 @@ public class InformacoesMB {
 		this.telefone = telefone;
 	}
 
-	public String getCep() {
-		return cep;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setCep(String cep) {
-		this.cep = cep;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

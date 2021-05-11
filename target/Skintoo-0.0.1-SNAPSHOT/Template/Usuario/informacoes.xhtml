@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formInformacoes">
+		<b:container fluid="true" styleClass="col-md-5" style="float: none">
+			<b:panel title="Informações do Cliente" collapsible="false">
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="CPF" required="true" mask="999.999.999 - 99"
+							value="#{informacoesMB.cpf}" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Telefone" required="true"
+							mask="(99) 9{4,5} - 9999" value="#{informacoesMB.telefone}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="CEP" required="true" mask="99999 - 999"
+							value="#{informacoesMB.cep}" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Estado" required="true"
+							value="#{informacoesMB.i.estado}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Cidade" required="true"
+							value="#{informacoesMB.i.cidade}" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Número da Casa" required="true" mask="numeric"
+							value="#{informacoesMB.i.numero_casa}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="12">
+						<b:inputText label="Rua" required="true"
+							value="#{informacoesMB.i.rua}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Complemento" required="true"
+							value="#{informacoesMB.i.complemento}" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:inputText label="Referncia" required="true"
+							value="#{informacoesMB.i.referencia}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Salvar" action="#{informacoesMB.info}"
+							style="width:100%" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Voltar" immediate="true"
+							action="#{templateMB.setOpt(1)}" style="width:100%" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
+</ui:composition>

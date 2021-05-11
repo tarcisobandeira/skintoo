@@ -36,7 +36,11 @@
 					action="#{templateMB.setOpt(2)}" ajax="true" update=":formTemplate" />
 
 				<b:navCommandLink value="#{loginMB.u.nome}"
-					action="#{templateMB.setOpt(9)}" rendered="#{loginMB.logado}" />
+					action="#{templateMB.setOpt(9)}" rendered="#{loginMB.logado}"
+					ajax="true" update=":formTemplate">
+					<f:setPropertyActionListener value="#{loginMB.u.id}"
+						target="#{informacoesMB.id}" />
+				</b:navCommandLink>
 
 				<b:navCommandLink value="Sair" rendered="#{loginMB.logado}"
 					action="#{loginMB.deslogar}" ajax="true" update=":formTemplate" />
