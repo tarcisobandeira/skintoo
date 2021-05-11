@@ -21,12 +21,16 @@ public class LoginMB {
 	@ManagedProperty(value = "#{templateMB}")
 	TemplateMB tMB;
 
+	@ManagedProperty(value = "#{informacoesMB}")
+	InformacoesMB iMB;
+
 	public String logar() {
 		u = ldao.buscarUsuario(login);
 		if (u != null && u.getSenha().equals(senha)) {
 			System.out.println("deu");
 			logado = true;
 			limpar();
+			iMB.setId(u.getId());
 			tMB.setOpt(1);
 			return "home?faces-redirect=true";
 		} else {
@@ -93,6 +97,14 @@ public class LoginMB {
 
 	public void settMB(TemplateMB tMB) {
 		this.tMB = tMB;
+	}
+
+	public InformacoesMB getiMB() {
+		return iMB;
+	}
+
+	public void setiMB(InformacoesMB iMB) {
+		this.iMB = iMB;
 	}
 
 }

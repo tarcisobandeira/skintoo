@@ -52,14 +52,6 @@ public class Informacoes {
 		this.id_usuario = id_usuario;
 	}
 
-	public Integer getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(Integer cpf) {
-		this.cpf = cpf;
-	}
-
 	public String getTelefone() {
 		return telefone;
 	}
@@ -130,6 +122,14 @@ public class Informacoes {
 
 	public void setCadastrado(Integer cadastrado) {
 		this.cadastrado = cadastrado;
+	}
+
+	public Integer getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(Integer cpf) {
+		this.cpf = cpf;
 	}
 
 }

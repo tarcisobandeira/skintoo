@@ -1,11 +1,15 @@
 package br.com.MBean;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
 public class TemplateMB {
+
+	@ManagedProperty(value = "#{informacoesMB}")
+	InformacoesMB iMB;
 
 	public int opt = 1;
 
@@ -27,6 +31,7 @@ public class TemplateMB {
 		} else if (opt == 8) {
 			return "/Template/Produtos/edtProdutos.xhtml";
 		} else if (opt == 9) {
+			iMB.busca();
 			return "/Template/Usuario/informacoes.xhtml";
 		}
 		return null;
@@ -39,6 +44,14 @@ public class TemplateMB {
 	public void setOpt(int opt) {
 		this.opt = opt;
 		mudar();
+	}
+
+	public InformacoesMB getiMB() {
+		return iMB;
+	}
+
+	public void setiMB(InformacoesMB iMB) {
+		this.iMB = iMB;
 	}
 
 }
