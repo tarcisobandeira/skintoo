@@ -23,7 +23,7 @@ public class InformacoesDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, i.getId_usuario());
-			ps.setInt(2, i.getCpf());
+			ps.setLong(2, i.getCpf());
 			ps.setString(3, i.getTelefone());
 			ps.setString(4, i.getEstado());
 			ps.setString(5, i.getCidade());
@@ -46,11 +46,11 @@ public class InformacoesDAO {
 
 	public boolean editInfo(Informacoes i) {
 		String sql = " UPDATE Informacoes SET cpf = ?, telefone = ?, estado = ?, cidade = ?, rua = ?, numero_casa = ?, complemento = ?, referencia = ?, "
-				+ " cep = ?, WHERE id_usuario = ? ";
+				+ " cep = ? WHERE id_usuario = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, i.getCpf());
+			ps.setLong(1, i.getCpf());
 			ps.setString(2, i.getTelefone());
 			ps.setString(3, i.getEstado());
 			ps.setString(4, i.getCidade());
@@ -84,7 +84,7 @@ public class InformacoesDAO {
 				Informacoes i = new Informacoes();
 				i.setId(rs.getInt("id"));
 				i.setId_usuario(rs.getInt("id_usuario"));
-				i.setCpf(rs.getInt("cpf"));
+				i.setCpf(rs.getLong("cpf"));
 				i.setTelefone(rs.getString("telefone"));
 				i.setEstado(rs.getString("estado"));
 				i.setCidade(rs.getString("cidade"));

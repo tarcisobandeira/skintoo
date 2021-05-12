@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS Informacoes;
 CREATE TABLE Informacoes(
 	id 			INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	id_usuario	INT,
-	cpf			INT,
+	cpf			BIGINT,
 	telefone	VARCHAR(15),
 	estado		VARCHAR(50),
 	cidade		VARCHAR(50),

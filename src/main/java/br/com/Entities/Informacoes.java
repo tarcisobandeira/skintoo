@@ -4,7 +4,7 @@ public class Informacoes {
 
 	private Integer id;
 	private Integer id_usuario;
-	private Integer cpf;
+	private long cpf;
 	private String telefone;
 	private String estado;
 	private String cidade;
@@ -15,7 +15,7 @@ public class Informacoes {
 	private Integer cep;
 	private Integer cadastrado;
 
-	public Informacoes(Integer id, Integer id_usuario, Integer cpf, String telefone, String estado, String cidade,
+	public Informacoes(Integer id, Integer id_usuario, long cpf, String telefone, String estado, String cidade,
 			String rua, Integer numero_casa, String complemento, String referencia, Integer cep, Integer cadastrado) {
 		super();
 		this.id = id;
@@ -124,11 +124,11 @@ public class Informacoes {
 		this.cadastrado = cadastrado;
 	}
 
-	public Integer getCpf() {
+	public long getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Integer cpf) {
+	public void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
 

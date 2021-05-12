@@ -10,17 +10,17 @@
 			<b:panel title="Informações do Cliente" collapsible="false">
 				<b:row>
 					<b:column col-xs="12" col-md="6">
-						<b:inputText label="CPF" required="true" mask="999.999.999 - 99"
+						<b:inputText label="CPF" mask="999.999.999-99" required="true"
 							value="#{informacoesMB.cpf}" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
-						<b:inputText label="Telefone" required="true"
-							mask="(99) 9{4,5} - 9999" value="#{informacoesMB.telefone}" />
+						<b:inputText label="Telefone" mask="(99)9{4,5}-9999"
+							required="true" value="#{informacoesMB.i.telefone}" />
 					</b:column>
 				</b:row>
 				<b:row>
 					<b:column col-xs="12" col-md="6">
-						<b:inputText label="CEP" required="true" mask="99999 - 999"
+						<b:inputText label="CEP" mask="99999-999" required="true"
 							value="#{informacoesMB.cep}" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
@@ -34,7 +34,7 @@
 							value="#{informacoesMB.i.cidade}" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
-						<b:inputText label="Número da Casa" required="true" mask="numeric"
+						<b:inputText label="Número da Casa" mask="numeric" required="true"
 							value="#{informacoesMB.i.numero_casa}" />
 					</b:column>
 				</b:row>

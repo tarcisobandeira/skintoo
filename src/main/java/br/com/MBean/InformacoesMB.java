@@ -17,7 +17,6 @@ public class InformacoesMB {
 	Integer id;
 	String cpf;
 	String cep;
-	String telefone;
 
 	public void busca() {
 		in = iDAO.selecInfo(id);
@@ -27,7 +26,37 @@ public class InformacoesMB {
 	}
 
 	public void info() {
-		
+		i.setCpf(tratamentoCPF(cpf));
+		i.setCep(tratamentoCEP(cep));
+		i.setId_usuario(id);
+
+		if (iDAO.testInfo(id)) {
+			if (iDAO.editInfo(i)) {
+				System.out.println("DEU cececece edita");
+			} else {
+				System.out.println("N edita");
+			}
+		} else {
+			if (iDAO.criarInfo(i)) {
+				System.out.println("DEU cececece cria");
+			} else {
+				System.out.println("N cria");
+			}
+		}
+	}
+
+	public long tratamentoCPF(String cpf) {
+		String r = cpf.replace('.', '#');
+		r = r.replace('-', '#');
+		r = r.replace("#", "");
+		long n1 = Long.parseLong(r);
+		return n1;
+	}
+
+	public Integer tratamentoCEP(String cep) {
+		String r = cep.replace("-", "");
+		Integer n1 = Integer.parseInt(r);
+		return n1;
 	}
 
 	public Informacoes getI() {
@@ -60,14 +89,6 @@ public class InformacoesMB {
 
 	public void setCep(String cep) {
 		this.cep = cep;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
 	}
 
 	public Integer getId() {
