@@ -1,7 +1,9 @@
 package br.com.MBean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.DAO.InformacoesDAO;
 import br.com.Entities.Informacoes;
@@ -14,14 +16,16 @@ public class InformacoesMB {
 	Informacoes in = new Informacoes();
 	InformacoesDAO iDAO = new InformacoesDAO();
 
-	Integer id;
+	Integer id = 0;
 	String cpf;
 	String cep;
 
-	public void busca() {
+	public void buscar() {
 		in = iDAO.selecInfo(id);
 		if (in != null) {
 			i = in;
+			cpf = String.valueOf(i.getCpf());
+			cep = String.valueOf(i.getCep());
 		}
 	}
 
@@ -32,15 +36,21 @@ public class InformacoesMB {
 
 		if (iDAO.testInfo(id)) {
 			if (iDAO.editInfo(i)) {
-				System.out.println("DEU cececece edita");
+				System.out.println("Skintoo: Informações editadas.");
+				mensagem(FacesMessage.SEVERITY_INFO, "", "Informações editadas com sucesso.");
 			} else {
-				System.out.println("N edita");
+				System.out.println("Skintoo: Erro ao editar informações.");
+				mensagem(FacesMessage.SEVERITY_ERROR, "Error",
+						"Por favor, contate um administrador sobre o erro ou tente novamente mais tarde.");
 			}
 		} else {
 			if (iDAO.criarInfo(i)) {
-				System.out.println("DEU cececece cria");
+				System.out.println("Skintoo: Informações inseridas com sucesso.");
+				mensagem(FacesMessage.SEVERITY_INFO, "", "As informações foram adicionadas com sucesso.");
 			} else {
-				System.out.println("N cria");
+				System.out.println("Skintoo: Erro ao inserir informações.");
+				mensagem(FacesMessage.SEVERITY_ERROR, "Error",
+						"Por favor, contate um administrador sobre o erro ou tente novamente mais tarde.");
 			}
 		}
 	}
@@ -57,6 +67,10 @@ public class InformacoesMB {
 		String r = cep.replace("-", "");
 		Integer n1 = Integer.parseInt(r);
 		return n1;
+	}
+
+	public void mensagem(FacesMessage.Severity severity, String summary, String detail) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, summary, detail));
 	}
 
 	public Informacoes getI() {
@@ -97,6 +111,7 @@ public class InformacoesMB {
 
 	public void setId(Integer id) {
 		this.id = id;
+		buscar();
 	}
 
 }

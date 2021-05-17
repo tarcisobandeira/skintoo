@@ -6,13 +6,15 @@ public class Produtos {
 	private String nome;
 	private Integer quantidade;
 	private String endereco;
+	private Integer ativo;
 
-	public Produtos(Integer id, String nome, Integer quantidade, String endereco) {
+	public Produtos(Integer id, String nome, Integer quantidade, String endereco, Integer ativo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.quantidade = quantidade;
 		this.endereco = endereco;
+		this.ativo = ativo;
 	}
 
 	public Produtos() {
@@ -49,5 +51,13 @@ public class Produtos {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public Integer getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Integer ativo) {
+		this.ativo = ativo;
 	}
 }

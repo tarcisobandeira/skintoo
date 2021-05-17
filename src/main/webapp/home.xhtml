@@ -18,22 +18,19 @@
 		<b:navBar>
 			<b:navbarLinks>
 
-				<b:navCommandLink value="Skintoo" action="#{templateMB.setOpt(1)}"
-					ajax="true" update=":formTemplate" />
+				<b:navCommandLink value="Skintoo" action="#{templateMB.setOpt(1)}" />
 
 				<b:navCommandLink value="Produtos" action="#{templateMB.setOpt(4)}"
-					ajax="true" update=":formTemplate"
 					rendered="#{loginMB.u.prioridade != 2}" />
 
 				<b:navCommandLink value="Administração de Produtos"
 					rendered="#{loginMB.u.prioridade == 2}"
 					action="#{templateMB.setOpt(5)}" />
 
-				<b:navCommandLink value="Opiniões" action="#{templateMB.setOpt(6)}"
-					ajax="true" update=":formTemplate" />
+				<b:navCommandLink value="Opiniões" action="#{templateMB.setOpt(6)}" />
 
 				<b:navCommandLink value="Login" rendered="#{loginMB.logado != true}"
-					action="#{templateMB.setOpt(2)}" ajax="true" update=":formTemplate" />
+					action="#{templateMB.setOpt(2)}" />
 
 				<b:navCommandLink value="#{loginMB.u.nome}"
 					action="#{templateMB.setOpt(9)}" rendered="#{loginMB.logado}">
@@ -42,13 +39,13 @@
 				</b:navCommandLink>
 
 				<b:navCommandLink value="Sair" rendered="#{loginMB.logado}"
-					action="#{loginMB.deslogar}" ajax="true" update=":formTemplate" />
+					action="#{loginMB.deslogar}" />
 
 			</b:navbarLinks>
 		</b:navBar>
 	</h:form>
 	<h:form id="formTemplate" styleClass="formTemplate">
-		<b:growl id="growlP" globalOnly="true" placementFrom="top"
+		<b:growl id="growlL" globalOnly="true" placementFrom="top"
 			show-detail="true" escape="true" />
 		<ui:insert>
 			<ui:include src="#{templateMB.mudar()}" />

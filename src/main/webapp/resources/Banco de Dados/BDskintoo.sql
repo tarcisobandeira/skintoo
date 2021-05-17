@@ -37,7 +37,8 @@ CREATE TABLE Produtos(
 	id 			INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nome		VARCHAR(100),
 	quantidade	INT,
-	endereco	VARCHAR(100)
+	endereco	VARCHAR(100),
+	ativo		INT
 );
 
 INSERT INTO Usuario (nome, sobrenome, email, senha, prioridade, ativo) VALUES ("Tarciso","Bandeira","tarcisojb@gmail.com","123",2,2)

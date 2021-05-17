@@ -25,7 +25,8 @@
 				<b:row>
 					<b:column col-xs="12" col-md="6">
 						<b:commandButton value="Adicionar" style="width:100%"
-							actionListener="#{produtosMB.addProc}" />
+							actionListener="#{produtosMB.addProc}"
+							update=":formNavbar :formTemplate" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
 						<b:commandButton value="Voltar" style="width:100%"

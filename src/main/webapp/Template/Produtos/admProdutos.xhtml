@@ -6,6 +6,8 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 	<h:form id="formAdmProdutos">
+		<b:growl id="growlProc" globalOnly="true" placementFrom="top"
+			show-detail="true" escape="true" />
 		<b:panel>
 			<b:commandButton value="Adicionar" look="primary"
 				action="#{templateMB.setOpt(7)}"
@@ -13,7 +15,8 @@
 			<b:dataTable value="#{produtosMB.pList}" var="proc"
 				styleClass="grade">
 				<b:dataTableColumn label="">
-					<b:image styleClass="imgProc" value="/resources/img/imgProc/#{proc.endereco}" />
+					<b:image styleClass="imgProc"
+						value="/resources/img/imgProc/#{proc.endereco}" />
 				</b:dataTableColumn>
 				<b:dataTableColumn value="#{proc.nome}" />
 				<b:dataTableColumn value="#{proc.quantidade}" />
@@ -23,7 +26,19 @@
 						<f:setPropertyActionListener value="#{proc}"
 							target="#{produtosMB.p}" />
 					</b:commandButton>
-					<b:commandButton iconAwesome="fa-close" look="danger" />
+					<p:commandButton styleClass="ui-button-danger deletButt"
+						icon="pi pi-times" oncomplete="#{produtosMB.desativar(proc.id)}"
+						update=":formTemplate:formAdmProdutos:growlProc">
+						<p:confirm type="popup" header="Confirmation"
+							message="Você deseja desativar esse produto?"
+							icon="pi pi-info-circle" />
+					</p:commandButton>
+					<p:confirmPopup global="true">
+						<p:commandButton value="Não" type="button"
+							styleClass="ui-confirm-popup-no ui-button-flat" />
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirm-popup-yes" />
+					</p:confirmPopup>
 				</b:dataTableColumn>
 			</b:dataTable>
 		</b:panel>

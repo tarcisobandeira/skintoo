@@ -1,8 +1,10 @@
 package br.com.MBean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.DAO.LoginDAO;
 import br.com.Entities.Usuario;
@@ -21,21 +23,22 @@ public class LoginMB {
 	@ManagedProperty(value = "#{templateMB}")
 	TemplateMB tMB;
 
-	public String logar() {
+	public void logar() {
 		u = ldao.buscarUsuario(login);
 		if (u != null && u.getSenha().equals(senha)) {
-			System.out.println("deu");
+			System.out.println("Skintoo: " + u.getNome() + " fez login.");
+			mensagem(FacesMessage.SEVERITY_INFO, u.getNome() + " " + u.getSobrenome(), "Bem Vindo");
 			logado = true;
 			limpar();
 			tMB.setOpt(1);
-			return "home?faces-redirect=true";
 		} else {
-			System.out.println("não deu");
-			return null;
+			System.out.println("Skintoo: Usuário ou Senha invalida.");
+			mensagem(FacesMessage.SEVERITY_WARN, "", "Usuário ou Senha invalida.");
 		}
 	}
 
 	public String deslogar() {
+		System.out.println("Skintoo: Usuário " + u.getNome() + " deslogou.");
 		u = new Usuario();
 		logado = false;
 		tMB.setOpt(1);
@@ -45,6 +48,10 @@ public class LoginMB {
 	public void limpar() {
 		login = null;
 		senha = null;
+	}
+
+	public void mensagem(FacesMessage.Severity severity, String summary, String detail) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, summary, detail));
 	}
 
 	public LoginDAO getLdao() {

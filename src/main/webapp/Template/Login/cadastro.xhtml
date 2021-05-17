@@ -7,14 +7,12 @@
 
 	<h:form id="formCadastro">
 
-		<b:growl id="growlL" globalOnly="true" placementFrom="top"
-			show-detail="true" escape="true" />
 		<b:container fluid="true" styleClass="col-md-5" style="float: none">
 			<b:panel title="Cadastro" collapsible="false">
 				<b:row>
 					<b:column col-xs="12" col-md="6">
-						<b:inputText label="Nome:" id="nome"
-							value="#{cadastroMB.u.nome}" required="true" />
+						<b:inputText label="Nome:" id="nome" value="#{cadastroMB.u.nome}"
+							required="true" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
 						<b:inputText label="Sobrenome: " id="sobrenome"
@@ -41,7 +39,7 @@
 				<b:row>
 					<b:column col-xs="12" col-md="4" style="width:100%">
 						<b:commandButton value="Cadastrar" action="#{cadastroMB.criar}"
-							style="width:100%" />
+							style="width:100%" update=":formNavbar :formTemplate" />
 					</b:column>
 				</b:row>
 			</b:panel>

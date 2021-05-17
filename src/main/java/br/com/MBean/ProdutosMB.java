@@ -3,8 +3,11 @@ package br.com.MBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
 import org.primefaces.event.FileUploadEvent;
 
 import br.com.DAO.ProdutosDAO;
@@ -26,21 +29,27 @@ public class ProdutosMB extends UploadMB {
 
 	public void addProc() {
 		if (pDAO.inserir(p)) {
-			System.out.println("Deu");
+			System.out.println("Skintoo: Produto adicionado ao estoque.");
+			mensagem(FacesMessage.SEVERITY_INFO, "", "Produto: " + p.getNome() + " adicionado ao estoque.");
 			updateList();
 			limpar();
 		} else {
-			System.out.println("Não DEu");
+			System.out.println("Skintoo: Erro ao adicionar no estoque");
+			mensagem(FacesMessage.SEVERITY_ERROR, "Error",
+					"Problemas na comunicação com o servidor, chame um tecnico ou faça novamente mais tarde.");
 		}
 	}
 
 	public void edtProc() {
 		if (pDAO.updateProc(p)) {
-			System.out.println("Deu");
+			System.out.println("Skintoo: Produto editado com sucesso.");
+			mensagem(FacesMessage.SEVERITY_INFO, "", "Produto: " + p.getNome() + " editado com sucesso.");
 			updateList();
 			limpar();
 		} else {
-			System.out.println("Não DEu");
+			System.out.println("Skintoo: Erro ao editar o produto.");
+			mensagem(FacesMessage.SEVERITY_ERROR, "Error",
+					"Problemas na comunicação com o servidor, chame um tecnico ou faça novamente mais tarde.");
 		}
 	}
 
@@ -48,6 +57,21 @@ public class ProdutosMB extends UploadMB {
 		p.setEndereco(super.addAnexo(event).getName());
 		if (p.getEndereco() != null) {
 			pDAO.updateImgProc(p);
+			System.out.println("Skintoo: Imagem adicionada.");
+			mensagem(FacesMessage.SEVERITY_INFO, "", "A imagem foi adicionada.");
+		} else {
+			System.out.println("Skintoo: Erro ao adicionar imagem.");
+			mensagem(FacesMessage.SEVERITY_WARN, "", "Erro ao adicionar a imagem.");
+		}
+	}
+
+	public void desativar(int id) {
+		if (pDAO.desativarProc(id)) {
+			System.out.println("Skintoo: Produto desativado.");
+			mensagem(FacesMessage.SEVERITY_INFO, "", "Produto desativado.");
+		} else {
+			System.out.println("Skintoo: Erro ao desativar o produto.");
+			mensagem(FacesMessage.SEVERITY_WARN, "", "Erro ao desativar o produto.");
 		}
 	}
 
@@ -57,6 +81,10 @@ public class ProdutosMB extends UploadMB {
 
 	public void limpar() {
 		p = new Produtos();
+	}
+
+	public void mensagem(FacesMessage.Severity severity, String summary, String detail) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, summary, detail));
 	}
 
 	public ProdutosDAO getpDAO() {

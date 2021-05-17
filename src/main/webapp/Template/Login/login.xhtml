@@ -7,8 +7,6 @@
 
 	<h:form id="formLogin">
 
-		<b:growl id="growlL" globalOnly="true" placementFrom="top"
-			show-detail="true" escape="true" />
 		<b:container fluid="true" styleClass="col-md-5" style="float: none">
 			<b:panel title="Login" collapsible="false">
 				<b:row>
@@ -28,7 +26,7 @@
 				<b:row>
 					<b:column col-xs="12" col-md="6">
 						<b:commandButton value="Login" action="#{loginMB.logar}"
-							style="width:100%" />
+							style="width:100%" update=":formNavbar :formTemplate" />
 					</b:column>
 					<b:column col-xs="12" col-md="6">
 						<b:commandButton value="Registrar" style="width:100%"
