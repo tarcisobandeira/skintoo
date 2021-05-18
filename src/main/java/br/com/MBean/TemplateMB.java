@@ -28,6 +28,8 @@ public class TemplateMB {
 			return "/Template/Produtos/edtProdutos.xhtml";
 		} else if (opt == 9) {
 			return "/Template/Usuario/informacoes.xhtml";
+		} else if (opt == 10) {
+			return "/Template/Produtos/cmpProdutos.xhtml";
 		}
 		return null;
 	}

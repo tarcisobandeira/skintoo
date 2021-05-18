@@ -120,4 +120,21 @@ public class InformacoesDAO {
 		return false;
 	}
 
+	public boolean testInfoCast(int i) {
+		String sql = " SELECT * FROM Informacoes WHERE id_usuario = ? AND cadastrado = 1 ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, i);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

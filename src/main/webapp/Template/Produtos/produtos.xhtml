@@ -15,6 +15,13 @@
 				</b:dataTableColumn>
 				<b:dataTableColumn value="#{proc.nome}" />
 				<b:dataTableColumn value="#{proc.quantidade}" />
+				<b:dataTableColumn label="">
+					<b:commandButton value="Comprar" look="primary"
+						action="#{produtosMB.testLoginInfo(loginMB.u.id)}">
+						<f:setPropertyActionListener value="#{proc}"
+							target="#{produtosMB.p}" />
+					</b:commandButton>
+				</b:dataTableColumn>
 			</b:dataTable>
 		</b:panel>
 	</h:form>

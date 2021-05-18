@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="formCompraProc">
+		<b:container fluid="true" styleClass="col-md-5" style="float: none">
+			<b:panel title="Compra do Item" collapsible="false">
+				<b:row>
+					<b:column col-xs="12" col-md="6" offset-md="4">
+						<b:image styleClass="imgProc"
+							value="/resources/img/imgProc/#{produtosMB.p.endereco}" />
+						<h:outputText value="#{produtosMB.p.nome}" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column>
+						<b:slider2 value="#{produtosMB.quantia}"
+							max="#{produtosMB.p.quantidade}" min="1" span="12"
+							label="Quantidade da compra:" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Comprar"
+							update=":formNavbar :formTemplate" action="#{produtosMB.comprar}"
+							style="width:100%" />
+					</b:column>
+					<b:column col-xs="12" col-md="6">
+						<b:commandButton value="Voltar" action="#{templateMB.setOpt(4)}"
+							style="width:100%" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
+</ui:composition>

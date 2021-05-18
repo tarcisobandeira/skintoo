@@ -43,7 +43,7 @@ public class ProdutosDAO {
 		System.out.println("SkinToo:Carregou os produtos.");
 		return list;
 	}
-	
+
 	public List<Produtos> listaProdutosPub() {
 		List<Produtos> list = new ArrayList<Produtos>();
 		String sql = " SELECT * FROM Produtos WHERE ativo = 1";
@@ -161,4 +161,23 @@ public class ProdutosDAO {
 		}
 		return false;
 	}
+
+	public boolean updateEstoque(int id, int quantia) {
+		String sql = " UPDATE Produtos SET quantidade = ? WHERE id = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, quantia);
+			ps.setInt(2, id);
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return false;
+	}
+
 }

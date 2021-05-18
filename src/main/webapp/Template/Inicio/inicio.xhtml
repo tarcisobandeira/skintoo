@@ -6,10 +6,34 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 	<h:form id="formInicio">
-		
+
 		<b:panel>
-			<h:outputText value="Bem Vindo"/>
+			<b:row>
+				<b:column col-md="6" col-xs="12">
+					<b:carousel style="width:400px">
+						<b:carouselItem>
+							<b:image value="resources/img/001.jpg" />
+						</b:carouselItem>
+						<b:carouselItem>
+							<b:image value="resources/img/002.jpg" />
+						</b:carouselItem>
+						<b:carouselItem>
+							<b:image value="resources/img/003.jpg" />
+						</b:carouselItem>
+						<b:carouselItem>
+							<b:image value="resources/img/004.jpg" />
+						</b:carouselItem>
+						<b:carouselItem>
+							<b:image value="resources/img/005.jpg" />
+						</b:carouselItem>
+					</b:carousel>
+				</b:column>
+				<b:column col-md="6" col-xs="12">
+					<h:outputText
+						value="Bem Vindo ao Skintoo, aaaaaaaaaaa aaaaaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaa a a aaaaaaaaa aaaaaaaaaaaaaaaaaa aaa aaaaaaaaaaaa" />
+				</b:column>
+			</b:row>
 		</b:panel>
-	
+
 	</h:form>
 </ui:composition>

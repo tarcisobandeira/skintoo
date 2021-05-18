@@ -33,3 +33,12 @@ body {
 	text-align: center;
 	vertical-align: middle;
 }
+
+.slider.slider-horizontal {
+	width: 100%;
+}
+
+.texto{
+	font-size: 30px;
+	padding-right: 15px;
+}

@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
 
+import br.com.DAO.InformacoesDAO;
 import br.com.DAO.ProdutosDAO;
 import br.com.Entities.Produtos;
 
@@ -17,15 +19,22 @@ import br.com.Entities.Produtos;
 @SessionScoped
 public class ProdutosMB extends UploadMB {
 
+	@ManagedProperty(value = "#{templateMB}")
+	TemplateMB tMB;
+
 	ProdutosDAO pDAO = new ProdutosDAO();
+	InformacoesDAO iDAO = new InformacoesDAO();
 
 	Produtos p = new Produtos();
+
+	Integer quantia;
 
 	List<Produtos> pList = new ArrayList<Produtos>();
 	List<Produtos> ppList = new ArrayList<Produtos>();
 
 	public ProdutosMB() {
 		updateList();
+		quantia = 1;
 	}
 
 	public void addProc() {
@@ -88,9 +97,43 @@ public class ProdutosMB extends UploadMB {
 		}
 	}
 
+	public void testLoginInfo(int id) {
+		if (id != 0) {
+			if (iDAO.testInfoCast(id)) {
+				tMB.setOpt(10);
+			} else {
+				limpar();
+				tMB.setOpt(9);
+				mensagem(FacesMessage.SEVERITY_WARN, "", "Por favor, Preencha suas informações para efetuar a compra.");
+			}
+		} else {
+			limpar();
+			tMB.setOpt(2);
+			mensagem(FacesMessage.SEVERITY_WARN, "",
+					"Por favor, faça login e preencha suas informações para efetuar a compra.");
+		}
+	}
+
+	public void comprar() {
+		int i = p.getQuantidade() - quantia;
+		if (pDAO.updateEstoque(p.getId(), i)) {
+			System.out.println("Skintoo: Foi comprado " + quantia + " do produto " + p.getNome() + ".");
+			mensagem(FacesMessage.SEVERITY_INFO, "",
+					"Compra de " + quantia + " do produto " + p.getNome() + " feita com sucesso.");
+			mensagem(FacesMessage.SEVERITY_INFO, "", "Favor de olhar o seu Email para finalizar a compra.");
+			updateList();
+			tMB.setOpt(4);
+		} else {
+			System.out.println("Skintoo: Erro ao comprar.");
+			mensagem(FacesMessage.SEVERITY_WARN, "Error",
+					"Por favor, contactar um administrador ou tentar novamente mais tarde.");
+		}
+	}
+
 	public void updateList() {
 		pList = pDAO.listaProdutos();
 		ppList = pDAO.listaProdutosPub();
+		quantia = 1;
 	}
 
 	public void limpar() {
@@ -131,6 +174,30 @@ public class ProdutosMB extends UploadMB {
 
 	public void setPpList(List<Produtos> ppList) {
 		this.ppList = ppList;
+	}
+
+	public TemplateMB gettMB() {
+		return tMB;
+	}
+
+	public void settMB(TemplateMB tMB) {
+		this.tMB = tMB;
+	}
+
+	public InformacoesDAO getiDAO() {
+		return iDAO;
+	}
+
+	public void setiDAO(InformacoesDAO iDAO) {
+		this.iDAO = iDAO;
+	}
+
+	public Integer getQuantia() {
+		return quantia;
+	}
+
+	public void setQuantia(Integer quantia) {
+		this.quantia = quantia;
 	}
 
 }
