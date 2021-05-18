@@ -20,11 +20,36 @@ public class ProdutosDAO {
 
 	public List<Produtos> listaProdutos() {
 		List<Produtos> list = new ArrayList<Produtos>();
-		String sql = " SELECT * FROM Produtos WHERE ativo = ?";
+		String sql = " SELECT * FROM Produtos ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, 1);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Produtos p = new Produtos();
+				p.setId(rs.getInt("id"));
+				p.setNome(rs.getString("nome"));
+				p.setQuantidade(rs.getInt("quantidade"));
+				p.setEndereco(rs.getString("endereco"));
+				p.setAtivo(rs.getInt("ativo"));
+
+				list.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		System.out.println("SkinToo:Carregou os produtos.");
+		return list;
+	}
+	
+	public List<Produtos> listaProdutosPub() {
+		List<Produtos> list = new ArrayList<Produtos>();
+		String sql = " SELECT * FROM Produtos WHERE ativo = 1";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -105,6 +130,23 @@ public class ProdutosDAO {
 
 	public boolean desativarProc(int id) {
 		String sql = " UPDATE Produtos SET ativo = 2 WHERE id = ? ";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+
+			if (ps.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean ativarProc(int id) {
+		String sql = " UPDATE Produtos SET ativo = 1 WHERE id = ? ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

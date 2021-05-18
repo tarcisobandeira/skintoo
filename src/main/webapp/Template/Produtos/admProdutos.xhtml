@@ -6,14 +6,13 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 	<h:form id="formAdmProdutos">
-		<b:growl id="growlProc" globalOnly="true" placementFrom="top"
-			show-detail="true" escape="true" />
 		<b:panel>
 			<b:commandButton value="Adicionar" look="primary"
 				action="#{templateMB.setOpt(7)}"
 				style="margin-bottom: 5px !important" />
 			<b:dataTable value="#{produtosMB.pList}" var="proc"
-				styleClass="grade">
+				styleClass="grade"
+				rowStyleClass="#{proc.ativo eq 2 ? 'desativado' : null}">
 				<b:dataTableColumn label="">
 					<b:image styleClass="imgProc"
 						value="/resources/img/imgProc/#{proc.endereco}" />
@@ -26,21 +25,22 @@
 						<f:setPropertyActionListener value="#{proc}"
 							target="#{produtosMB.p}" />
 					</b:commandButton>
-					<p:commandButton styleClass="ui-button-danger deletButt"
-						icon="pi pi-times" oncomplete="#{produtosMB.desativar(proc.id)}"
-						update=":formTemplate:formAdmProdutos:growlProc">
-						<p:confirm type="popup" header="Confirmation"
-							message="Você deseja desativar esse produto?"
-							icon="pi pi-info-circle" />
-					</p:commandButton>
-					<p:confirmPopup global="true">
-						<p:commandButton value="Não" type="button"
-							styleClass="ui-confirm-popup-no ui-button-flat" />
-						<p:commandButton value="Sim" type="button"
-							styleClass="ui-confirm-popup-yes" />
-					</p:confirmPopup>
+					<b:commandButton iconAwesome="fa-close" look="danger"
+						rendered="#{proc.ativo == 1}"
+						action="#{produtosMB.desativarP(proc.id)}"
+						update=":formNavbar :formTemplate" />
+					<b:commandButton iconAwesome="fa-check" look="primary"
+						rendered="#{proc.ativo == 2}"
+						action="#{produtosMB.ativarP(proc.id)}"
+						update=":formNavbar :formTemplate" />
 				</b:dataTableColumn>
 			</b:dataTable>
 		</b:panel>
 	</h:form>
+	<style>
+.desativado {
+	background-color: #ff5e5e !important;
+	color: #000000 !important;
+}
+</style>
 </ui:composition>

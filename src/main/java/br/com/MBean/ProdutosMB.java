@@ -22,6 +22,7 @@ public class ProdutosMB extends UploadMB {
 	Produtos p = new Produtos();
 
 	List<Produtos> pList = new ArrayList<Produtos>();
+	List<Produtos> ppList = new ArrayList<Produtos>();
 
 	public ProdutosMB() {
 		updateList();
@@ -65,8 +66,9 @@ public class ProdutosMB extends UploadMB {
 		}
 	}
 
-	public void desativar(int id) {
+	public void desativarP(int id) {
 		if (pDAO.desativarProc(id)) {
+			updateList();
 			System.out.println("Skintoo: Produto desativado.");
 			mensagem(FacesMessage.SEVERITY_INFO, "", "Produto desativado.");
 		} else {
@@ -75,8 +77,20 @@ public class ProdutosMB extends UploadMB {
 		}
 	}
 
+	public void ativarP(int id) {
+		if (pDAO.ativarProc(id)) {
+			updateList();
+			System.out.println("Skintoo: Produto ativado.");
+			mensagem(FacesMessage.SEVERITY_INFO, "", "Produto ativado.");
+		} else {
+			System.out.println("Skintoo: Erro ao ativar o produto.");
+			mensagem(FacesMessage.SEVERITY_WARN, "", "Erro ao ativar o produto.");
+		}
+	}
+
 	public void updateList() {
 		pList = pDAO.listaProdutos();
+		ppList = pDAO.listaProdutosPub();
 	}
 
 	public void limpar() {
@@ -109,6 +123,14 @@ public class ProdutosMB extends UploadMB {
 
 	public void setP(Produtos p) {
 		this.p = p;
+	}
+
+	public List<Produtos> getPpList() {
+		return ppList;
+	}
+
+	public void setPpList(List<Produtos> ppList) {
+		this.ppList = ppList;
 	}
 
 }
