@@ -38,7 +38,11 @@ body {
 	width: 100%;
 }
 
-.texto{
+.texto {
 	font-size: 30px;
 	padding-right: 15px;
+}
+
+.texto2 {
+	text-align: justify;
 }

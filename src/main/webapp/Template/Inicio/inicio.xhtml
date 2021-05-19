@@ -7,10 +7,10 @@
 
 	<h:form id="formInicio">
 
-		<b:panel>
+		<b:panel offset-md="1" col-md="10">
 			<b:row>
-				<b:column col-md="6" col-xs="12">
-					<b:carousel style="width:400px">
+				<b:column col-md="4" col-xs="12">
+					<b:carousel style="width:100%">
 						<b:carouselItem>
 							<b:image value="resources/img/001.jpg" />
 						</b:carouselItem>
@@ -28,12 +28,43 @@
 						</b:carouselItem>
 					</b:carousel>
 				</b:column>
+
 				<b:column col-md="6" col-xs="12">
-					<h:outputText
-						value="Bem Vindo ao Skintoo, aaaaaaaaaaa aaaaaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaa a a aaaaaaaaa aaaaaaaaaaaaaaaaaa aaa aaaaaaaaaaaa" />
+					<b:row>
+						<b:column offset-md="4">
+							<h:outputText style="font-size:28px" value="Bem vindo ao Skintoo" />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column offset-md="2">
+							<b:row>
+								<b:column>
+									<h:outputText styleClass="texto2"
+										value="Somos uma empresa especializada em pele artificial com mais de 10 anos de mercado e com vários clientes satisfeitos!" />
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column>
+									<h:outputText
+										value="Nossos produtos são utilizados para o aperfeiçoamento de técnicas em micropigmentação de diferentes setores e também para a prática e também das tatuagens." />
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column>
+									<h:outputText
+										value="Nossos produtos simulam perfeitamente uma pele humana, levando ao aluno uma experiência muito realista." />
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column>
+									<h:outputText
+										value="Somos pioneiros neste setor e nossa missão é elevar a experiência do cliente final, preparando cada dia mais os profissionais do nosso Brasil." />
+								</b:column>
+							</b:row>
+						</b:column>
+					</b:row>
 				</b:column>
 			</b:row>
 		</b:panel>
-
 	</h:form>
 </ui:composition>
